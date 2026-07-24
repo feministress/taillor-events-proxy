@@ -32,7 +32,8 @@ export default async function handler(req, res) {
       image: ev.image
         ? `https://cdn.discordapp.com/guild-events/${ev.id}/${ev.image}.png?size=512`
         : null,
-      source: 'academy'
+      source: 'academy',
+      online: !!ev.channel_id // true = hosted in a Discord voice/stage channel, false = in-person (external location)
     }));
 
     res.status(200).json({ events });
